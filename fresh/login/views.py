@@ -101,7 +101,8 @@ def site(request):
         uname = post.get('uname')
         uaddress = post.get('uaddress')
         uyoubian = post.get('uyoubian')
-        uphone = post.get('uphone')
+        uphone =post.get('uphone')
+
 
         user.ushou = uname
         user.uaddress = uaddress
