@@ -1,20 +1,8 @@
 {% extends 'public/base.html' %}
 
-	{% block title %}注册{% endblock %}
+	{% block title %}{{ title }}{% endblock %}
 	{% block head %}
 	<script type="text/javascript" src="/static/login/js/register1.js"></script>
-	<script type="text/javascript">
-        $(function () {
-			var erorrval = {{ erorrval|safe }};
-
-			if(erorrval.erorrval == '提示信息'){
-			    $('#error_tip1').html(erorrval.erorrval).css({'display':'none'});
-			}else{
-			    $('#error_tip1').html(erorrval.erorrval).css({'display':'block'});
-			}
-
-        });
-	</script>
 	{% endblock head %}
 
 {% block main %}

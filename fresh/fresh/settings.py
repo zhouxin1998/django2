@@ -39,6 +39,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'login',
+    'df_goods',
+    'df_cart',
+    'df_order',
+    'tinymce',
+    'haystack'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,9 +96,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -109,3 +114,28 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+# 开发环境上传目录
+MEDIA_ROOT = os.path.join(BASE_DIR,'static')
+# 生产环境上传目录
+# MEDIA_ROOT = '/var/www/fresh/static'
+
+
+# 富文本编辑器
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'advanced',
+    'width': 600,
+    'height': 400,
+}
+
+# 全文检索
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        # 'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    }
+}
+#自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+# HAYSTACK_DEFAULT_OPERATOR = 'OR'
+HAYSTACK_SEARCH_RESULTS_PER_PAGE=18
