@@ -46,7 +46,7 @@ def df_order(request):
 def site1(request):
     # 修改收货地址，返回当前页面
     red = HttpResponseRedirect('/user/site/')
-    red.set_cookie('url1', 'tt')
+    request.session['url1'] = 'tt'
     return red
 
 

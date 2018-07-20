@@ -26,7 +26,7 @@ SECRET_KEY = 'avroq)aua)g4y72js3!)k3h+5%m52kjz!b8zhhfj-wm-2ec*y4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]#表示所有ip可以访问服务器
 
 
 # Application definition
@@ -115,9 +115,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 # 开发环境上传目录
-MEDIA_ROOT = os.path.join(BASE_DIR,'static')
+# MEDIA_ROOT = os.path.join(BASE_DIR,'static')
 # 生产环境上传目录
-# MEDIA_ROOT = '/var/www/fresh/static'
+# MEDIA_ROOT = '/var/www/fresh/static/'
+STATIC_ROOT = '/var/www/fresh/static/'
 
 
 # 富文本编辑器

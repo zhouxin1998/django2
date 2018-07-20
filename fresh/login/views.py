@@ -144,7 +144,6 @@ def site(request):
 def site_handle(request):
     user = UserInfo.objects.get(id=request.session['user_id'])
     if request.method == 'POST':
-
         post = request.POST
         uname = post.get('uname')
         uaddress = post.get('uaddress')
@@ -157,10 +156,14 @@ def site_handle(request):
         user.uphone = uphone
         user.save()
 
-        url = request.COOKIES.get('url1', '')
+        # request.session.flush()
+        url = request.session.get('url1',default=None)
         if url == 'tt':
+            # request.session['url1'] = None
+            del request.session['url1']
+            # request.session.clear()
+            # request.session.flush()
             red = HttpResponseRedirect('/df_order/')
             return red
-
     context = {'title': '用户中心', 'user': user, 'user_page': 1}
     return render(request, 'login/user_center_site.html', context)
